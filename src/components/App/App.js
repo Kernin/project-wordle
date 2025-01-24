@@ -1,16 +1,19 @@
+import React from 'react';
 import Game from '../Game';
 import Header from '../Header';
+import GuessInput from '../GuessInput';
 
 function App() {
-  return (
-    <div className="wrapper">
-      <Header />
+	return (
+		<div className='wrapper'>
+			<Header />
 
-      <div className="game-wrapper">
-        <Game />
-      </div>
-    </div>
-  );
+			<div className='game-wrapper'>
+				<Game />
+				<GuessInput />
+			</div>
+		</div>
+	);
 }
 
 export default App;
