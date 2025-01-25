@@ -5,12 +5,17 @@ import { range } from '../../utils';
 const numGuess = NUM_OF_GUESSES_ALLOWED;
 
 function Guess({ guessList }) {
+	let i = guessList.length;
 	return (
 		<div>
-			{range(6).map((item) => (
+			{/* grid of 6 <p> for guess */}
+			{range(numGuess).map((item) => (
 				<p className='guess' key={crypto.randomUUID()}>
-					{range(5).map((guessItem) => (
-						<span className='cell' key={crypto.randomUUID()}></span>
+					{/* grid for 5 letter of the guess */}
+					{range(5).map((letter) => (
+						<span className='cell' key={crypto.randomUUID()}>
+							{}
+						</span>
 					))}
 				</p>
 			))}
