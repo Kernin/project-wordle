@@ -3,6 +3,7 @@ import Game from '../Game';
 import Header from '../Header';
 import GuessInput from '../GuessInput';
 import GuessResult from '../GuessResult/GuessResult';
+import Guess from '../Guess/Guess';
 
 function App() {
 	const [guessInput, setGuessInput] = React.useState('');
@@ -16,7 +17,9 @@ function App() {
 				<Game />
 
 				{/* show list of guess's */}
-				<GuessResult guessList={guessList}></GuessResult>
+				{/* <GuessResult guessList={guessList}></GuessResult> */}
+
+				<Guess guessList={guessList}></Guess>
 
 				{/* lifted user guess and creates the list of guesses */}
 				<GuessInput
