@@ -1,16 +1,22 @@
 import React from 'react';
 
-function GuessInput({ guessInput, setGuessInput, guessList, setGuessList }) {
+function GuessInput({
+	guessInput,
+	setGuessInput,
+	guessList = [],
+	setGuessList,
+}) {
 	function preventEvent(event) {
 		event.preventDefault();
 
 		// create and add guess to array
-		let userGuess = [...guessList];
-		userGuess.push(guessInput);
-		setGuessList(userGuess);
+		const letterInput = guessInput.split('');
+
+		guessList.push(letterInput);
+		setGuessList([...guessList]);
 
 		// Console log guess and clear the input
-		console.log({ guessInput });
+		// console.log(guessList);
 		setGuessInput('');
 	}
 
@@ -25,7 +31,8 @@ function GuessInput({ guessInput, setGuessInput, guessList, setGuessList }) {
 				placeholder='Your Guess'
 				pattern='[A-Z]{5,5}'
 				onChange={(event) => {
-					setGuessInput(event.target.value.toUpperCase());
+					const guessTxt = event.target.value.toUpperCase();
+					setGuessInput(guessTxt);
 				}}
 			/>
 		</form>
