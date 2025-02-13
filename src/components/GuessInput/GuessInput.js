@@ -1,10 +1,12 @@
 import React from 'react';
+import { checkGuess } from '../../game-helpers';
 
 function GuessInput({
 	guessInput,
 	setGuessInput,
 	guessList = [],
 	setGuessList,
+	sample = '',
 }) {
 	function preventEvent(event) {
 		event.preventDefault();
@@ -13,10 +15,12 @@ function GuessInput({
 		const letterInput = guessInput.split('');
 
 		guessList.push(letterInput);
-		setGuessList([...guessList]);
+		// setGuessList([...guessList]);
+		const comparingList = checkGuess(guessInput, sample);
+		// setGuessList(...comparingList);
+		console.log('comparingList: ', comparingList);
 
 		// Console log guess and clear the input
-		// console.log(guessList);
 		setGuessInput('');
 	}
 
