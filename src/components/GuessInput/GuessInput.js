@@ -18,7 +18,7 @@ function GuessInput({
 		// setGuessList([...guessList]);
 		const comparingList = checkGuess(guessInput, sample);
 		// setGuessList(...comparingList);
-		console.log('comparingList: ', comparingList);
+		// console.log('comparingList: ', comparingList);
 
 		// Console log guess and clear the input
 		setGuessInput('');
