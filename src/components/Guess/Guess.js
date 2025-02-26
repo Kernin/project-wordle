@@ -5,15 +5,8 @@ import { checkGuess } from '../../game-helpers';
 
 function Guess({ guessInput = '', guessList, setGuessList, sample }) {
 	const numGuess = NUM_OF_GUESSES_ALLOWED;
-
-	const emptyStringArr = [
-		['', '', '', '', ''],
-		['', '', '', '', ''],
-		['', '', '', '', ''],
-		['', '', '', '', ''],
-		['', '', '', '', ''],
-		['', '', '', '', ''],
-	];
+	const emptyStringArr = [];
+	range(numGuess).map((num) => emptyStringArr.push(['', '', '', '', '']));
 
 	// the answer separated to letters, but maybe we dont need it b/c we have the CheckGuess
 	const sampleSplit = sample.split('');

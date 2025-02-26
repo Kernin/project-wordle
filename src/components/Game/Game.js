@@ -18,11 +18,11 @@ function Game() {
 		<>
 			{/* show list of guess's */}
 
-			<Guess
+			{/* <Guess
 				guess={guessInput}
 				guessList={guessList}
 				setGuessList={setGuessList}
-				sample={answer}></Guess>
+				sample={answer}></Guess> */}
 
 			{/* lifted user guess and creates the list of guesses */}
 			<GuessInput

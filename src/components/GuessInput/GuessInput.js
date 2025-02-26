@@ -17,8 +17,10 @@ function GuessInput({
 		guessList.push(letterInput);
 		// setGuessList([...guessList]);
 		const comparingList = checkGuess(guessInput, sample);
-		// setGuessList(...comparingList);
-		// console.log('comparingList: ', comparingList);
+
+		setGuessList(comparingList);
+		console.log('comparingList: ', comparingList);
+		console.log('guessList: ', guessList);
 
 		// Console log guess and clear the input
 		setGuessInput('');
