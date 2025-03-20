@@ -11,16 +11,20 @@ function GuessInput({
 	function preventEvent(event) {
 		event.preventDefault();
 
-		// create and add guess to array
-		const letterInput = guessInput.split('');
-
-		guessList.push(letterInput);
-		// setGuessList([...guessList]);
+		// using function on guess and comparing it to answer, adding to new array
 		const comparingList = checkGuess(guessInput, sample);
 
-		setGuessList(comparingList);
-		console.log('comparingList: ', comparingList);
-		console.log('guessList: ', guessList);
+		// Function to add new guess object to setGuessList
+		function addGuess(newGuess) {
+			setGuessList((prevGuess) => [...prevGuess, newGuess]);
+		}
+
+		// use adding function to the variable that holds the result of comparing function
+		addGuess(comparingList);
+
+		// === CONSOLELOG ===
+		// console.log('comparingList: ', comparingList);
+		// console.log('guessList: ', guessList);
 
 		// Console log guess and clear the input
 		setGuessInput('');
