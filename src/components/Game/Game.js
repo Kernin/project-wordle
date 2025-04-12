@@ -1,33 +1,26 @@
 import React from 'react';
-
-import { sample } from '../../utils';
-import { WORDS } from '../../data';
 import GuessInput from '../GuessInput';
-import Guess from '../Guess/Guess';
+import GuessResult from '../GuessResult';
 
 // Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
+// const answer = sample(WORDS);
 
 function Game() {
-	const [guessInput, setGuessInput] = React.useState('');
-	const [guessList, setGuessList] = React.useState([]);
+	const [guessOption, setGuessOption] = React.useState([]);
+
+	// Handler for the guess. Basically we cannot pass the guess as it is, bc we need the complete word not the medium copy as we type, so well use the handler to create an array and then send that array for the guessResult
+	function handleSubmitGuess(guess) {
+		setGuessOption([...guessOption, guess]);
+	}
 
 	return (
 		<>
 			{/* show list of guess's */}
 
-			<Guess guess={guessInput} guessList={guessList} sample={answer}></Guess>
+			<GuessResult guessOption={guessOption}></GuessResult>
 
 			{/* lifted user guess and creates the list of guesses */}
-			<GuessInput
-				guessList={guessList}
-				guessInput={guessInput}
-				setGuessInput={setGuessInput}
-				setGuessList={setGuessList}
-				sample={answer}
-			/>
+			<GuessInput handleSubmitGuess={handleSubmitGuess} />
 		</>
 	);
 }

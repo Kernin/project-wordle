@@ -1,31 +1,13 @@
 import React from 'react';
-import { checkGuess } from '../../game-helpers';
 
-function GuessInput({
-	guessInput,
-	setGuessInput,
-	guessList = [],
-	setGuessList,
-	sample = '',
-}) {
+function GuessInput({ handleSubmitGuess }) {
+	const [guessInput, setGuessInput] = React.useState('');
+
 	function preventEvent(event) {
 		event.preventDefault();
 
-		// using function on guess and comparing it to answer, adding to new array
-		const comparingList = checkGuess(guessInput, sample);
-
-		// Function to add new guess object to setGuessList
-		function addGuess(newGuess) {
-			setGuessList((prevGuess) => [...prevGuess, newGuess]);
-		}
-
-		// use adding function to the variable that holds the result of comparing function
-		addGuess(comparingList);
-
-		// === CONSOLELOG ===
-		// console.log('comparingList: ', comparingList);
-		// console.log('guessList: ', guessList);
-
+		// pass value up to game.js (which created the function)
+		handleSubmitGuess(guessInput);
 		// Console log guess and clear the input
 		setGuessInput('');
 	}

@@ -1,21 +1,14 @@
 import React from 'react';
-import Guess from '../Guess/Guess';
-import utils from '../../utils';
+import { range } from '../../utils';
+import Guess from '../Guess';
 
-function GuessResult({ guess = '', guessList = [] }) {
-	// Split guess into letters to make an array and save it to guessList
-	const lettersWithStatus = guess.split('').map((letter, index) => ({
-		letter,
-		status: guessList[index] || 'empty', // Default to "empty" if no status
-	}));
-
+function GuessResult({ guessOption }) {
+	console.log('guessOption ', guessOption);
 	return (
-		<div className='guess-row'>
-			{lettersWithStatus.map(({ letter, status }, index) => (
+		<div className='guess-results'>
+			{range(5).map((i) => (
 				<p className='guess' key={crypto.randomUUID()}>
-					<span key={index} className={`letter-box ${status}`}>
-						{letter}
-					</span>
+					<Guess guessWord={guessOption[i]}></Guess>
 				</p>
 			))}
 		</div>
