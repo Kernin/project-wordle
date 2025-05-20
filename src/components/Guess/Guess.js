@@ -1,21 +1,29 @@
 import React from 'react';
-import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { checkGuess } from '../../game-helpers';
 import { range } from '../../utils';
+import Cell from '../../components/Cell';
 
-function Guess({ guessWord = '' }) {
-	const separatedGuess = guessWord.toString().split('');
+function Guess({ guessWord, answer }) {
+	//CHEAT ANSWER
+	// create a component, in this case it declared inside this one component, which is bad practice
 
-	// console.log(typeof guessWord, guessWord);
+	// function Cell({ letter, status }) {
+	// 	return <span className={`cell ${status}`}>{letter}</span>;
+	// }
+
+	// this separates the array of the answer after turning it to string
+	const results = checkGuess(guessWord, answer);
 
 	return (
-		<>
+		<p className='guess'>
 			{range(5).map((guess) => (
-				<span className='cell' key={crypto.randomUUID()}>
-					{separatedGuess[guess]}
-					{/* {console.log('separated', guessWord.toString().split(''))} */}
-				</span>
+				<Cell
+					key={guess}
+					letter={results ? results[guess].letter : undefined}
+					status={results ? results[guess].status : undefined}
+				/>
 			))}
-		</>
+		</p>
 	);
 }
 
