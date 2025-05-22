@@ -17,11 +17,12 @@ function Guess({ guessWord, answer }) {
 	return (
 		<p className='guess'>
 			{range(5).map((guess) => (
-				<Cell
+				<span
 					key={guess}
-					letter={results ? results[guess].letter : undefined}
-					status={results ? results[guess].status : undefined}
-				/>
+					className={`cell ${results ? results[guess].status : undefined}`}>
+					{results ? results[guess].letter : undefined}
+					{/* {results ? results[guess].status : undefined} */}
+				</span>
 			))}
 		</p>
 	);
